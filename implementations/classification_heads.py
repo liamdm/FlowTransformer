@@ -1,8 +1,9 @@
-from typing import List
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
+import numpy as np
+import tensorflow as tf
 
 from framework import BaseClassificationHead
-import tensorflow as tf
-import numpy as np
 
 try:
     from tensorflow._api.v2.v2 import keras

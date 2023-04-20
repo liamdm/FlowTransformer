@@ -1,10 +1,13 @@
-import numpy as np
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
 import os
-import pandas as pd
 import time
 import warnings
 from enum import Enum
 from typing import List, Optional, Union, Tuple
+
+import numpy as np
+import pandas as pd
 
 from utilities import save_feather_plus_metadata, load_feather_plus_metadata, get_identifier
 
@@ -15,7 +18,6 @@ except ImportError:
 
 from keras import Input, Model
 from keras.layers import Dense, Dropout
-
 
 class CategoricalFormat(Enum):
     """

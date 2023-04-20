@@ -1,13 +1,12 @@
-from pyclbr import Function
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
 
-from framework import BaseSequential, FunctionalComponent, BaseClassificationHead
+from framework import BaseSequential, BaseClassificationHead
 
 try:
     from tensorflow._api.v2.v2 import keras
 except ImportError:
     from tensorflow import keras
 
-from keras import Input, Model
 from keras.layers import Dense, Flatten
 
 class DummyTransformer(BaseSequential):

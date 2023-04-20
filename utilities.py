@@ -1,3 +1,5 @@
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
 import base64
 import hashlib
 import json
@@ -5,6 +7,7 @@ import pickle
 from typing import Tuple
 
 import pandas as pd
+
 
 def get_identifier(d:dict):
     raw_json = json.dumps(d, sort_keys=True, indent=False)

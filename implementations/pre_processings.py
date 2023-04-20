@@ -1,8 +1,10 @@
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
 import numpy as np
 import pandas as pd
-from sklearn.preprocessing import OneHotEncoder
 
 from framework import BasePreProcessing, CategoricalFormat
+
 
 class StandardPreProcessing(BasePreProcessing):
     def __init__(self, n_categorical_levels: int, clip_numerical_values:bool=False):

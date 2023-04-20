@@ -1,16 +1,17 @@
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
 import warnings
 from enum import Enum
-from typing import Optional, List, Tuple
+from typing import List
 
 try:
     from tensorflow._api.v2.v2 import keras
 except ImportError:
     from tensorflow import keras
 
-from keras import Input, Model
-from keras.layers import Embedding, Dense, Concatenate, Reshape, Flatten, Lambda
+from keras.layers import Embedding, Dense, Concatenate, Reshape, Lambda
 import tensorflow as tf
-from framework import BaseInputEncoding, CategoricalFormat, ModelInputSpecification, FunctionalComponent
+from framework import BaseInputEncoding, CategoricalFormat
 
 
 class NoInputEncoder(BaseInputEncoding):
