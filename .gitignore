@@ -1,0 +1,6 @@
+# Project exclude paths
+/cache/
+/paper_results/
+/paper_results/cache/
+/paper_results/results/
+/results/
