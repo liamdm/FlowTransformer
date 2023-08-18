@@ -22,6 +22,18 @@ ft = FlowTransformer(
 
 THe FlowTransformerParameters allows control over the sequential pipeline itself. `window_size` is the number of items to ingest in a sequence, `mlp_layer_sizes` is the number of nodes in each layer of the output MLP used for classification at the end of the pipeline, and the `mlp_dropout` is the dropout rate to apply to this network (0 for no dropout). 
 
+FlowTransformer can then be attached to a dataset, doing this will perform pre-processing on the dataset if it has not already been applied (caching is automatic):
+
+```
+ft.load_dataset(dataset_name, dataset_path, dataset_specification, evaluation_dataset_sampling=eval_method, evaluation_percent=eval_percent)
+```
+
+Once the dataset is loaded, and the input sizes are computed, a Keras model can be built, which consists of the `InputEncoding`, `Model` and `ClassificationHead` components. To do  this, simply call `build_model` which returns a `Keras.Model`:
+
+```
+model = ft.build_model()
+model.summary()
+```
 ## Jupyter Notebook
 
 ...
