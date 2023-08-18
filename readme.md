@@ -30,9 +30,27 @@ dataset_spec = DatasetSpecification(
 flow_transformer.load_dataset(dataset_name, path_to_dataset, dataset_spec) 
 ```
 
+The rest of the pipeline will automatically handle any changes in data format - and will correctly differentiate between categorical and numerical fields.
+
 ### Implementing Custom Pre-processing 
 
-...
+To define a custom pre-processing (which is generally not required, given the supplied pre-processing is capable of handling the majority of muiltivariate datasets), override the base class `BasePreprocessing`:
+
+```
+class CustomPreprocessing(BasePreProcessing):
+
+    def fit_numerical(self, column_name:str, values:np.array):
+        ...
+
+    def transform_numerical(self, column_name:str, values: np.array):
+        ...
+
+    def fit_categorical(self, column_name:str, values:np.array):
+        ...
+
+    def transform_categorical(self, column_name:str, values:np.array, expected_categorical_format:CategoricalFormat):
+        ...
+```
 
 ### Implementing Custom Encodings 
 
