@@ -94,7 +94,21 @@ Both of these cases must be handled by your custom pre-processing implementation
 
 ### Implementing Custom Encodings 
 
-...
+To implement a custom input encoding, the `BaseInputEncoding` class must be overridden. 
+
+```
+class CustomInputEncoding(BaseInputEncoding):
+    def apply(self, X:List["keras.Input"], prefix: str = None):
+        # do operations on the inputs X
+        ...
+        return X
+
+    @property
+    def required_input_format(self) -> CategoricalFormat:
+        return CategoricalFormat.Integers
+```
+
+Here, `apply` is simply the input encoding tranformation to be applied to the inputs to the model. For no transformation, we can simply return the input. The required input format should return the expected format of categorical fields, if this should be `Integers` or `OneHot`.
 
 ### Implementing Custom Transformers
 
