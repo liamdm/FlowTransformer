@@ -9,6 +9,19 @@ FlowTransformer is a modular pipeline that consists of four key components. Thes
 |--------------------|--------------------|-----------|-------------------------|
 | The pre-processing component accepts arbitrary tabular datasets, and can standardise and transform these into a format applicable for use with machine learning models. For most datasets, our supplied `StandardPreprocessing` approach will handle datasets with categorical and numerical fields, however, custom implementations can be created by overriding `BasePreprocessing`                  | The input encoding component will accept a pre-processed dataset and perform the transformations neccescary to ingest this as part of a sequence to sequence model. For example, the embedding of fields into feature vectors.                  | FlowTransformer supports the use of any sequence-to-sequence machine learning model, and we supply several Transformer implementations.         | The classification head is responsible for taking the sequential output from the model, and transforming this into a fixed length vector suitable for use in classification. We recommed using `LastToken` for most applications.                       |
 
+To initialise FlowTransformer, we simply need to provide each of these components to the FlowTransformer class:
+```
+ft = FlowTransformer(
+  pre_processing=<pre processing>,
+  input_encoding=<encoding>,
+  sequential_model=<model>,
+  classification_head=<classification head>,
+  params=FlowTransformerParameters(window_size=..., mlp_layer_sizes=[...], mlp_dropout=...)
+)
+```
+
+THe FlowTransformerParameters allows control over the sequential pipeline itself. `window_size` is the number of items to ingest in a sequence, `mlp_layer_sizes` is the number of nodes in each layer of the output MLP used for classification at the end of the pipeline, and the `mlp_dropout` is the dropout rate to apply to this network (0 for no dropout). 
+
 ## Jupyter Notebook
 
 ...
