@@ -17,7 +17,18 @@ FlowTransformer is a modular pipeline that consists of four key components. Thes
 
 ### Ingesting custom data formats
 
-...
+Custom data formats can be easily ingested by FlowTransformer. To ingest a new data format, a `DataSpecification` can be defined, and then supplied to `FlowTransformer`:
+
+```
+dataset_spec = DatasetSpecification(
+    include_fields=['OUT_PKTS', 'OUT_BYTES', ..., 'IN_BYTES', 'L7_PROTO'],
+    categorical_fields=['CLIENT_TCP_FLAGS', 'L4_SRC_PORT', ..., 'L4_DST_PORT', 'L7_PROTO'],
+    class_column="Attack",
+    benign_label="Benign"
+)
+
+flow_transformer.load_dataset(dataset_name, path_to_dataset, dataset_spec) 
+```
 
 ### Implementing Custom Pre-processing 
 
