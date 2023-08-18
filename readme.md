@@ -52,6 +52,12 @@ class CustomPreprocessing(BasePreProcessing):
         ...
 ```
 
+Note, the `CategoricalFormat` here is passed automatically by the `InputEncoding` stage of the pipeline:
+- If the `InputEncoding` stage expects categorical fields to be encoded as integers, it will return `CategoricalFormat.Integers`
+- If the `InputEncoding` stage expets categorical fields to be one-hot encoded, it will return `CategoricalFormat.OneHot`
+
+Both of these cases must be handled by your custom pre-processing implementation.
+
 ### Implementing Custom Encodings 
 
 ...
