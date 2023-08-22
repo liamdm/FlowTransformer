@@ -45,7 +45,7 @@ However, the `model` object can be used in part of custom training loops.
 
 ## Jupyter Notebook
 
-...
+We have included an example of using FlowTransformer with a fresh dataset in the Jupyter notebook available in [demonstration.ipynb](demonstration.ipynb)
 
 ## Implementing your own solutions with FlowTransformer
 
