@@ -1,12 +1,11 @@
-import warnings
-from framework import BaseSequential
 try:
     from tensorflow._api.v2.v2 import keras
 except ImportError:
     from tensorflow import keras
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+
 import tensorflow as tf
-import keras.layers as layers
-from keras.layers import Dense, Concatenate, Flatten, Lambda, GlobalAveragePooling1D, Conv1D, Layer, MultiHeadAttention, Dropout, LayerNormalization
+from keras.layers import Dense, Layer, MultiHeadAttention, Dropout, LayerNormalization
 
 class TransformerDecoderBlock(Layer):
     def __init__(self, input_dimension:int, inner_dimension:int, num_heads:int, dropout_rate=0.1):

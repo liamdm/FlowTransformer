@@ -3,7 +3,7 @@
 import numpy as np
 import tensorflow as tf
 
-from framework import BaseClassificationHead
+from framework.base_classification_head import BaseClassificationHead
 
 try:
     from tensorflow._api.v2.v2 import keras

@@ -4,7 +4,10 @@ import os
 
 import pandas as pd
 
-from framework import NamedDatasetSpecifications, EvaluationDatasetSampling, FlowTransformer, FlowTransformerParameters
+from framework.dataset_specification import NamedDatasetSpecifications
+from framework.enumerations import EvaluationDatasetSampling
+from framework.flow_transformer import FlowTransformer
+from framework.flow_transformer_parameters import FlowTransformerParameters
 from implementations.classification_heads import *
 from implementations.input_encodings import *
 from implementations.pre_processings import StandardPreProcessing
@@ -67,5 +70,6 @@ m.compile(optimizer="adam", loss='binary_crossentropy', metrics=['binary_accurac
 # Get the evaluation results
 eval_results: pd.DataFrame
 (train_results, eval_results, final_epoch) = ft.evaluate(m, batch_size=128, epochs=5, steps_per_epoch=64, early_stopping_patience=5)
+
 
 print(eval_results)

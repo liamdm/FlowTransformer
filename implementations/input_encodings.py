@@ -4,6 +4,9 @@ import warnings
 from enum import Enum
 from typing import List
 
+from framework.base_input_encoding import BaseInputEncoding
+from framework.enumerations import CategoricalFormat
+
 try:
     from tensorflow._api.v2.v2 import keras
 except ImportError:
@@ -11,8 +14,6 @@ except ImportError:
 
 from keras.layers import Embedding, Dense, Concatenate, Reshape, Lambda
 import tensorflow as tf
-from framework import BaseInputEncoding, CategoricalFormat
-
 
 class NoInputEncoder(BaseInputEncoding):
     def apply(self, X, prefix:str=None):

@@ -1,6 +1,5 @@
-import warnings
-
-from framework import BaseSequential
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+from framework.base_sequential import BaseSequential
 from implementations.transformers.basic.decoder_block import TransformerDecoderBlock
 from implementations.transformers.basic.encoder_block import TransformerEncoderBlock
 
@@ -8,12 +7,6 @@ try:
     from tensorflow._api.v2.v2 import keras
 except ImportError:
     from tensorflow import keras
-
-import tensorflow as tf
-
-
-import keras.layers as layers
-from keras.layers import Dense, Concatenate, Flatten, Lambda, GlobalAveragePooling1D, Conv1D
 
 class BasicTransformer(BaseSequential):
 

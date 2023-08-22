@@ -3,7 +3,8 @@
 import numpy as np
 import pandas as pd
 
-from framework import BasePreProcessing, CategoricalFormat
+from framework.base_preprocessing import BasePreProcessing
+from framework.enumerations import CategoricalFormat
 
 
 class StandardPreProcessing(BasePreProcessing):

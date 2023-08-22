@@ -1,4 +1,5 @@
-from framework import BaseSequential
+#  FlowTransformer 2023 by liamdm / liam@riftcs.com
+from framework.base_sequential import BaseSequential
 from implementations.transformers.basic.decoder_block import TransformerDecoderBlock
 from implementations.transformers.basic.encoder_block import TransformerEncoderBlock
 
