@@ -280,7 +280,7 @@ class FlowTransformer:
                      n_rows:int=0,
                      evaluation_dataset_sampling:EvaluationDatasetSampling=EvaluationDatasetSampling.LastRows,
                      evaluation_percent:float=0.2,
-                     numerical_filter=1_000_000_000):
+                     numerical_filter=1_000_000_000) -> pd.DataFrame:
         """
         Load a dataset and prepare it for training
 
