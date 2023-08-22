@@ -1,6 +1,10 @@
 # FlowTransformer
 The framework for transformer based NIDS development
 
+## Jupyter Notebook
+
+We have included an example of using FlowTransformer with a fresh dataset in the Jupyter notebook available in [demonstration.ipynb](demonstration.ipynb)
+
 ## Usage instructions
 
 FlowTransformer is a modular pipeline that consists of four key components. These components can be swapped as required for custom implementations, or you can use our supplied implementations:
@@ -42,10 +46,6 @@ Finally, FlowTransformer has a built in training and evaluation method, which re
 ```
 
 However, the `model` object can be used in part of custom training loops. 
-
-## Jupyter Notebook
-
-We have included an example of using FlowTransformer with a fresh dataset in the Jupyter notebook available in [demonstration.ipynb](demonstration.ipynb)
 
 ## Implementing your own solutions with FlowTransformer
 
