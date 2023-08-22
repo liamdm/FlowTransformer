@@ -122,3 +122,6 @@ Here, `apply` is simply the input encoding tranformation to be applied to the in
 
 Please see the wiki for this Github for a list of the associated FlowTransformer components and their description. Feel free to expand the Wiki with your own custom components after your pull request is accepted.
 
+## Datasets used in this work
+
+Several of the datasets used in this work [are available here](https://staff.itee.uq.edu.au/marius/NIDS_datasets/)
