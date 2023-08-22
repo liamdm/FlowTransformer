@@ -15,7 +15,7 @@ from framework.enumerations import EvaluationDatasetSampling, CategoricalFormat
 from framework.flow_transformer_parameters import FlowTransformerParameters
 from framework.framework_component import FunctionalComponent
 from framework.model_input_specification import ModelInputSpecification
-from framework.utilities import get_identifier, load_feather_plus_metadata
+from framework.utilities import get_identifier, load_feather_plus_metadata, save_feather_plus_metadata
 
 try:
     from tensorflow._api.v2.v2 import keras
@@ -44,7 +44,10 @@ class FlowTransformer:
         self.parameters = params
 
         self.dataset_specification: Optional[DatasetSpecification] = None
+
         self.X = None
+        self.y = None
+
         self.training_mask = None
         self.model_input_spec: Optional[ModelInputSpecification] = None
 
@@ -244,8 +247,8 @@ class FlowTransformer:
                 else:
                     n_one_hot_levels = new_values.shape[1]
                     levels_per_categorical_feature.append(n_one_hot_levels)
-                    for i in range(n_one_hot_levels):
-                        new_df[f"{col_name}_{i}"] = new_values[:, i]
+                    for z in range(n_one_hot_levels):
+                        new_df[f"{col_name}_{z}"] = new_values[:, z]
             else:
                 # single column of integers
                 levels_per_categorical_feature.append(len(np.unique(new_values)))
@@ -273,7 +276,7 @@ class FlowTransformer:
     def load_dataset(self, dataset_name:str,
                      dataset:Union[pd.DataFrame, str],
                      specification:DatasetSpecification,
-                     cache_folder:Optional[str]=None,
+                     cache_path:Optional[str]=None,
                      n_rows:int=0,
                      evaluation_dataset_sampling:EvaluationDatasetSampling=EvaluationDatasetSampling.LastRows,
                      evaluation_percent:float=0.2,
@@ -284,18 +287,17 @@ class FlowTransformer:
         :param dataset: The path to a CSV dataset to load from, or a dataframe
         :param cache_path: Where to store a cached version of this file
         :param n_rows: The number of rows to ingest from the dataset, or 0 to ingest all
-        :param cat_dimensionality_limit: Only encode the most frequent n categorical levels, and assign the rest to an 'other' level
         """
 
-        if cache_folder is None:
-            cache_folder = "cache"
+        if cache_path is None:
+            cache_path = "cache"
 
-        if not os.path.exists(cache_folder):
-            warnings.warn(f"Could not find cache folder: {cache_folder}, attempting to create")
-            os.mkdir(cache_folder)
+        if not os.path.exists(cache_path):
+            warnings.warn(f"Could not find cache folder: {cache_path}, attempting to create")
+            os.mkdir(cache_path)
 
         self.dataset_specification = specification
-        df, model_input_spec = self._load_preprocessed_dataset(dataset_name, dataset, specification, cache_folder, n_rows, evaluation_dataset_sampling, evaluation_percent, numerical_filter)
+        df, model_input_spec = self._load_preprocessed_dataset(dataset_name, dataset, specification, cache_path, n_rows, evaluation_dataset_sampling, evaluation_percent, numerical_filter)
 
         training_mask = df["__training"].values
         del df["__training"]

@@ -27,6 +27,7 @@ class TransformerDecoderBlock(Layer):
         self.dropout2 = Dropout(dropout_rate)
         self.layernorm2 = LayerNormalization(epsilon=1e-6)
 
+    # noinspection PyMethodOverriding
     def call(self, inputs, training, mask=None):
         # inputs = (target_seq, enc_output)
         target_seq = inputs

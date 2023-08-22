@@ -1,13 +1,5 @@
 #  FlowTransformer 2023 by liamdm / liam@riftcs.com
-class BaseSequential:
-    @property
-    def name(self) -> str:
-        raise NotImplementedError()
+from framework.framework_component import FunctionalComponent
 
-    @property
-    def parameters(self) -> dict:
-        raise NotImplementedError()
-
-    @property
-    def apply(self, X, prefix: str = None):
-        raise NotImplementedError()
+class BaseSequential(FunctionalComponent):
+    pass

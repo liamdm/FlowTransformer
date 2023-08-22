@@ -8,6 +8,7 @@ from framework.dataset_specification import NamedDatasetSpecifications
 from framework.enumerations import EvaluationDatasetSampling
 from framework.flow_transformer import FlowTransformer
 from framework.flow_transformer_parameters import FlowTransformerParameters
+from framework.framework_component import FunctionalComponent
 from implementations.classification_heads import *
 from implementations.input_encodings import *
 from implementations.pre_processings import StandardPreProcessing
@@ -32,7 +33,7 @@ classification_heads = [
     FeaturewiseEmbedding(project=True),
 ]
 
-transformers = [
+transformers: List[FunctionalComponent] = [
     BasicTransformer(2, 128, n_heads=2),
     BasicTransformer(2, 128, n_heads=2, is_decoder=True),
     GPTSmallTransformer(),

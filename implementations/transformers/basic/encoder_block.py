@@ -27,6 +27,7 @@ class GPT3Attention(layers.Layer):
         x = tf.reshape(x, (batch_size, -1, self.n_heads, self.depth))
         return tf.transpose(x, perm=[0, 2, 1, 3])
 
+    # noinspection PyMethodOverriding
     def call(self, q, k, v, mask=None):
         batch_size = tf.shape(q)[0]
 
@@ -93,6 +94,7 @@ class TransformerEncoderBlock(layers.Layer):
         self.feed_forward_dropout = layers.Dropout(dropout_rate, name=f"{prefix}feed_forward_dropout")
         self.feed_forward_layer_norm = layers.LayerNormalization(epsilon=layer_norm, name=f"{prefix}feed_forward_layer_norm")
 
+    # noinspection PyMethodOverriding
     def call(self, inputs, training, mask=None):
         x = inputs
         x = self.attention(x, x) if self.attn_implementation == MultiHeadAttentionImplementation.Keras else self.attention(x, x, x, mask)

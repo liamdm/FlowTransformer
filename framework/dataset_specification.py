@@ -8,8 +8,9 @@ class DatasetSpecification:
         Defines the format of specific NIDS dataset
         :param include_fields: The fields to include as part of classification
         :param categorical_fields: Fields that should be treated as categorical
-        :param y_column_multiclass: The column name that includes the class of the flow, eg. DDoS or Benign
+        :param class_column: The column name that includes the class of the flow, eg. DDoS or Benign
         :param benign_label: The label of benign traffic, eg. Benign or 0
+        :param test_column: The column indicating if this row is a member of the test or training dataset
         """
         self.include_fields:List[str] = include_fields
         self.categorical_fields:List[str] = categorical_fields
