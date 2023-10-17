@@ -127,7 +127,7 @@ class CategoricalFeatureEmbed(BaseInputEncoding):
                 x = Dense(self.dimensions_per_feature,
                           activation="linear",
                           use_bias=(self.embed_layer_type == EmbedLayerType.Dense),
-                          name=f"{prefix}embed_{categorical_field_name}")(cat_field_x)
+                          name=f"{prefix}embed_{categorical_field_name.replace('/', '')}")(cat_field_x)
                 collected_categorical.append(x)
 
             elif self.embed_layer_type == EmbedLayerType.Lookup:
