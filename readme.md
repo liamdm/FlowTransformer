@@ -1,6 +1,23 @@
 # FlowTransformer
 The framework for transformer based NIDS development
 
+### If you think this work is helpful, please cite
+```latex
+@article{MANOCCHIO2024122564,
+title = {FlowTransformer: A transformer framework for flow-based network intrusion detection systems},
+journal = {Expert Systems with Applications},
+volume = {241},
+pages = {122564},
+year = {2024},
+issn = {0957-4174},
+doi = {https://doi.org/10.1016/j.eswa.2023.122564},
+url = {https://www.sciencedirect.com/science/article/pii/S095741742303066X},
+author = {Liam Daly Manocchio and Siamak Layeghy and Wai Weng Lo and Gayan K. Kulatilleke and Mohanad Sarhan and Marius Portmann}
+}
+```
+
+
+
 ## Jupyter Notebook
 
 We have included an example of using FlowTransformer with a fresh dataset in the Jupyter notebook available in [demonstration.ipynb](demonstration.ipynb)
